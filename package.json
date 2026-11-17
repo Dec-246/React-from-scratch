@@ -1,0 +1,24 @@
+{
+  "name": "react-from-scratch",
+  "version": "1.0.0",
+  "description": "This repo follows along with the React course tutorial on Laracast by Simon Vrachliotis.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dec-246/React-from-scratch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dec-246/React-from-scratch/issues"
+  },
+  "homepage": "https://github.com/Dec-246/React-from-scratch#readme",
+  "devDependencies": {
+    "vite": "^8.3.8"
+  }
+}
