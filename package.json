@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite",
-    "jsx": "babel input.jsx --presets=@babel/preset-react --out-file output.js --watch"
+    "dev": "vite"
   },
   "repository": {
     "type": "git",
@@ -23,9 +22,7 @@
     "vite": "^8.3.8"
   },
   "dependencies": {
-    "@babel/cli": "^8.1.0",
-    "@babel/core": "^8.1.2",
-    "@babel/preset-react": "^8.0.1",
+    "@vitejs/plugin-react": "^6.3.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   }
