@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+        <title>React from scratch</title>
 
-    <!-- takes care of compiling/ understanding JSX code -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <!-- <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+        <!-- takes care of compiling/ understanding JSX code -->
+        <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+         <script type="module" src="./app.jsx"></script>
+    </head>
 
-    <title>React from scratch</title>
-</head>
     <body>
-        
         <h1>Hello React!</h1>
 
         <div id="app"></div>
 
-        <script type="text/babel">
-            const day = 'Monday'
-
-            function App() {
-                return (
-                    <div>
-                        <h2>Happy Monday!</h2>
-                        <p>I hope you have a <em>great</em> day!</p>
-                    </div>
-                )
-            }
-
-            const app = document.getElementById('app')
-            const root = ReactDOM.createRoot(app)
-
-            root.render(<App />)
-        </script>
+        <script type="text/babel" data-type="module" src="./app.jsx"></script>
     </body>
 </html>
