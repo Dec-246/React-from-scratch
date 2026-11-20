@@ -6,6 +6,7 @@ import { Shortlist } from "./components/Shortlist";
 import { PuppiesList } from "./components/PuppiesList";
 import { NewPuppyForm } from "./components/NewPuppyForm";
 import { puppies } from "./data/puppies";
+import { useState } from "react";
 
 export function App() {
   return (
@@ -19,14 +20,20 @@ export function App() {
 }
 
 function Main() {
+
+// PASSING ARRAY OF PUPPY IDs
+    // define 'liked puppies' state
+  const [liked, setLiked] = useState<Puppy["id"][]>([1, 3]); // array of (number type) puppies liked
+
   return (
     <main>
       <div className="mt-24 grid gap-8 sm:grid-cols-2">
         <Search />
-        <Shortlist />
+        <Shortlist puppies={puppies} liked={liked} />
       </div>
 
-      <PuppiesList puppies={puppies} />
+{/* passing state to component */}
+      <PuppiesList puppies={puppies} liked={liked} setLiked={setLiked} /> 
       <NewPuppyForm />
     </main>
   );
