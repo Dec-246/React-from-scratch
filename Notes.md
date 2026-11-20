@@ -14,3 +14,7 @@ Due to JSX compiling JS, some HTML attributes change name to avoid reserved lang
 - MUST use 'className' attribute instead of 'class' in tags such as ``` <ul className="new-list"></ul> ```
     - 'class' attribute is reserved key word in JS
 - Must use either ``` <React.Fragment></React.Fragment> or <></> to place multiple top-level elements.
+
+## Components
+
+Components can help to maintain a clean codebase. We create an exportable function (makes the function globally accessible), and then import the function into the required files. We should keep functions in their relevant files to ensure code readability is easier.

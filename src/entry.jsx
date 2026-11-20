@@ -6,6 +6,6 @@ import { App } from "./App";
 
 createRoot(document.getElementById('app')).render(
     <StrictMode>
-     <App />
+        <App />
     </StrictMode>,
 );
