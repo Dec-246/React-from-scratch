@@ -2,24 +2,19 @@ import React from "react";
 import { type Puppy } from "../types";
 import { LikeToggle } from "./LikeToggle";
 
+
 // defining types for React component
 export function PuppiesList({ 
   puppies,
-  liked,
-  setLiked,
  }: { 
   puppies: Puppy[] // puppies list returns array of Puppy
-  liked: Puppy["id"][] // receives liked value (number array)
-  setLiked: Dispatch<SetStateAction<Puppy["id"][]>>;
 }) {
   return (
     <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {puppies.map((puppy) => (
           <PuppyCard 
           key={puppy.id} 
-          puppy={puppy} 
-          liked={liked} 
-          setLiked={setLiked} />
+          puppy={puppy}  />
         ))}
 
     </ul>
@@ -28,11 +23,9 @@ export function PuppiesList({
 
 type PuppyCardProps = {
   puppy: Puppy;
-  liked: Puppy["id"][];
-  setLiked: Dispatch<SetStateAction<Puppy["id"][]>>;
 };
 
-function PuppyCard({ puppy, liked, setLiked }: PuppyCardProps) {
+function PuppyCard({ puppy }: PuppyCardProps) {
   
   return (
     <li key={puppy.id} className="overflow-clip rounded-lg bg-white shadow-md ring ring-black/5 hover:-translate-y-0.5">
@@ -52,8 +45,6 @@ function PuppyCard({ puppy, liked, setLiked }: PuppyCardProps) {
 
             <LikeToggle 
             id={puppy.id} 
-            liked={liked} 
-            setLiked={setLiked} 
             />
           </div>
     </li>

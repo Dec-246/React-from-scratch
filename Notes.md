@@ -18,3 +18,7 @@ Due to JSX compiling JS, some HTML attributes change name to avoid reserved lang
 ## Components
 
 Components can help to maintain a clean codebase. We create an exportable function (makes the function globally accessible), and then import the function into the required files. We should keep functions in their relevant files to ensure code readability is easier.
+
+## Context API
+
+ provides a way to share data globally across components without prop drilling. It allows creating a lightweight global state accessible by any component.
