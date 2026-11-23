@@ -29,7 +29,7 @@ function Main() {
     <main>
       <div className="mt-24 grid gap-8 sm:grid-cols-2">
         <Search />
-        <Shortlist puppies={puppies} liked={liked} />
+        <Shortlist puppies={puppies} liked={liked} setLiked={setLiked}/>
       </div>
 
 {/* passing state to component */}
