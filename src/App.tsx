@@ -29,7 +29,7 @@ function Main() {
   const [liked, setLiked] = useState<Puppy["id"][]>([1, 3]); // array of (number type) puppies liked
 
   // created search query string, passed it to search and puppy list
-  const [searchQuery, setSearchQuery] = useState<string>("hello");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const [puppies, setPuppies] = useState<Puppy[]>(puppiesData);
 
