@@ -1,7 +1,7 @@
 import React from "react";
 import { type Puppy } from "../types";
 import { Dispatch, SetStateAction } from "react";
-import { X } from "lucide-react";
+import { Heart, X } from "lucide-react";
 import { puppies } from "../data/puppies";
 import { useLiked } from "../context/liked-context";
 
@@ -18,7 +18,8 @@ export function Shortlist({
   return (
     <div>
       <h2 className="flex items-center gap-2 font-medium">
-        <b>Shortlist</b>
+        <span><b>Shortlist</b></span>
+        <Heart className="fill-pink-500 stroke-pink-500" />
       </h2>
       <ul className="mt-4 flex flex-wrap gap-4">
         {puppies

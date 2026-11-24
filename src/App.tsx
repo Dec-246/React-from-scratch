@@ -28,17 +28,20 @@ function Main() {
     // define 'liked puppies' state
   const [liked, setLiked] = useState<Puppy["id"][]>([1, 3]); // array of (number type) puppies liked
 
+  // created search query string, passed it to search and puppy list
+  const [searchQuery, setSearchQuery] = useState<string>("hello");
+
   return (
     <main>
       <LikedContext value={{ liked, setLiked }}>
 
         <div className="mt-24 grid gap-8 sm:grid-cols-2">
-          <Search />
+          <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <Shortlist puppies={puppies} />
         </div>
 
         {/* passing state to component */}
-        <PuppiesList puppies={puppies} /> 
+        <PuppiesList searchQuery={searchQuery} puppies={puppies} /> 
       </LikedContext>
 
       <NewPuppyForm />

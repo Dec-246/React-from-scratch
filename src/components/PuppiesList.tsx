@@ -5,13 +5,17 @@ import { LikeToggle } from "./LikeToggle";
 
 // defining types for React component
 export function PuppiesList({ 
+  searchQuery,
   puppies,
  }: { 
+  searchQuery: string;
   puppies: Puppy[] // puppies list returns array of Puppy
 }) {
   return (
     <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {puppies.map((puppy) => (
+      {puppies
+      .filter(pup => pup.vibe.toLowerCase().includes(searchQuery.toLowerCase()))
+      .map((puppy) => (
           <PuppyCard 
           key={puppy.id} 
           puppy={puppy}  />
