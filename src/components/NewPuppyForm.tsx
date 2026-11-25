@@ -20,10 +20,11 @@ export function NewPuppyForm({
           const newPuppy: Puppy = {
             id: puppies.length + 1,
             name: formData.get('name') as string,
-            vibe: formData.get('trait') as string,
+            trait: formData.get('trait') as string,
 
             // give random image between 7 and 22
-            imagePath: `/images/${Math.floor(Math.random() * 16) + 7}.jpg`,
+            imageUrl: `/images/${Math.floor(Math.random() * 16) + 7}.jpg`,
+            likedBy: [1],
           };
 
           // spread existing array (of 6 puppies), then append 7th puppy at end.

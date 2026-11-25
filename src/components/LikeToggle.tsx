@@ -1,16 +1,10 @@
 import { Heart, LoaderCircle } from "lucide-react";
-import { type Puppy } from "../types";
-import { useLiked } from "../context/liked-context";
+import { Puppy } from "../types";
 import { useState } from "react";
 
 
-export function LikeToggle ({
-    id,
-}: {
-    id: Puppy["id"];
-}) {
+export function LikeToggle ({ puppy }: { puppy: Puppy }) {
 
-    const { liked, setLiked } = useLiked();
     const [pending, setPending] = useState(false);
 
     return (
@@ -22,18 +16,18 @@ export function LikeToggle ({
                 setPending(true);
 
                 // Setting time buffer of 1.5s when user likes a post
-                setTimeout(() => {
+                // setTimeout(() => {
 
-                    // if puppy is already liked, remove liked state
-                    if (liked.includes(id)) {
-                        setLiked(liked.filter(pupId => pupId !== id));
-                    } else {
-                        // otherwise, add puppy to liked array
-                        setLiked([...liked, id]);
-                    }
+                //     // if puppy is already liked, remove liked state
+                //     if (liked.includes(id)) {
+                //         setLiked(liked.filter(pupId => pupId !== id));
+                //     } else {
+                //         // otherwise, add puppy to liked array
+                //         setLiked([...liked, id]);
+                //     }
                     
-                    setPending(false);
-                }, 1500);
+                //     setPending(false);
+                // }, 1500);
  
             }}
             >
@@ -45,7 +39,7 @@ export function LikeToggle ({
 
                 <Heart 
                     className={
-                        liked.includes(id) // does liked array inlude puppy ID
+                        puppy.likedBy.includes(1)
                         // setting styles for like button 
                         ? "fill-pink-500 stroke-none"
                         : "stroke-slate-200 group-hover:stroke-slate-300"

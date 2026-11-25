@@ -19,35 +19,9 @@ export function App() {
     <PageWrapper>
       <Container>
         <Header />
-        <Main />
-      </Container>
-    </PageWrapper>
-  );
-}
 
-function Main() {
-
-// PASSING ARRAY OF PUPPY IDs
-  // define 'liked puppies' state
-  const [liked, setLiked] = useState<Puppy["id"][]>([1, 3]); // array of (number type) puppies liked
-
-  // created search query string, passed it to search and puppy list
-  const [searchQuery, setSearchQuery] = useState<string>("");
-
-  const [puppies, setPuppies] = useState<Puppy[]>(puppiesData);
-
-
-  return (
-    <main>
-        <ErrorBoundary 
-        fallbackRender={({ error }) => (
-          // if error, red box
-          <div className="mt-12 bg-red p-6 shadow ring ring-black/5">
-            <p className="text-red-500">
-              {error.message}: {error.details}
-            </p>
-          </div>
-        )}
+<ErrorBoundary 
+        fallbackRender={({ error }) => <ErrorBox error={error} />}
         >
 
           {/* using fallback prop to provide loading indicator whilst data loads */}
@@ -57,11 +31,35 @@ function Main() {
               <div className="mt-12 bg-white p-6 shadow ring ring-black/5">
                 <LoaderCircle className="animate-spin stroke-slate-300" />
               </div>
-          }>
-
-            <ApiPuppies />
+          }
+          >
+            <Main />
           </Suspense>
         </ErrorBoundary>
+
+      </Container>
+    </PageWrapper>
+  );
+}
+
+const puppyPrmoise = getPuppies();
+
+
+function Main() {
+  const apiPuppies = use(puppyPrmoise);
+
+// PASSING ARRAY OF PUPPY IDs
+  // define 'liked puppies' state
+  const [liked, setLiked] = useState<Puppy["id"][]>([1, 3]); // array of (number type) puppies liked
+
+  // created search query string, passed it to search and puppy list
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const [puppies, setPuppies] = useState<Puppy[]>(apiPuppies);
+
+
+  return (
+    <main>          
       
       <LikedContext value={{ liked, setLiked }}>
         <div className="mt-24 grid gap-8 sm:grid-cols-2">
@@ -83,14 +81,24 @@ function Main() {
   );
 }
 
-const puppyPrmoise = getPuppies();
 
-function ApiPuppies () {
-  const apiPuppies = use(puppyPrmoise);
+// function ApiPuppies () {
+//   const apiPuppies = use(puppyPrmoise);
+//   return (
+//     // if succeeds, green box
+//     <div className="mt-12 bg-green p-6 shadow ring ring-black/5">
+//       <pre>{JSON.stringify(apiPuppies, null, 2)}</pre>
+//     </div>
+//   ); 
+// }
+
+function ErrorBox({ error }) {
   return (
-    // if succeeds, green box
-    <div className="mt-12 bg-green p-6 shadow ring ring-black/5">
-      <pre>{JSON.stringify(apiPuppies, null, 2)}</pre>
+    // if error, red box
+    <div className="mt-12 bg-red-100 p-6 shadow ring ring-black/5">
+      <p className="text-red-500">
+        {error.message}: {error.details}
+      </p>
     </div>
-  ); 
+  )
 }

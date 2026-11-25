@@ -9,7 +9,7 @@ export async function getPuppies() {
           throw errorData;
         }
 
-        const data = await response.json();
+        const {data} = await response.json();
         
         // set them to state
         return data;

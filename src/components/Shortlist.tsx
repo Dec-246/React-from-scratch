@@ -57,7 +57,7 @@ function LikedPuppyCard({ puppy, liked, setLiked }: LikedPuppyCardProps) {
         <img
           className="aspect-square w-8 object-cover"
           alt={puppy.name}
-          src={puppy.imagePath}
+          src={puppy.imageUrl}
           width={32}
           height={32}
         />
