@@ -32,3 +32,10 @@ Components can help to maintain a clean codebase. We create an exportable functi
  ### Lesson outcome
 
 Creating a small API opened my eyes to how extremely easy it is to create and utilise APIs within a system. I initially thought it would be more complex than this but it actually couldn't be easier.
+
+## React Suspense
+
+https://react.dev/reference/react/Suspense
+
+Allows you to postpone rendering until data is available.
+
