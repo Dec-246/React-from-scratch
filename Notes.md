@@ -22,3 +22,13 @@ Components can help to maintain a clean codebase. We create an exportable functi
 ## Context API
 
  provides a way to share data globally across components without prop drilling. It allows creating a lightweight global state accessible by any component.
+
+ ## Data Fetching with useEffect
+
+ - We created another project 'react-from-scratch-api' which posts array of puppy data to the browser. This React project calls that endpoint and receives this data through its UI.
+
+ ![puppy endpoint fed into this project](image.png)
+
+ ### Lesson outcome
+
+Creating a small API opened my eyes to how extremely easy it is to create and utilise APIs within a system. I initially thought it would be more complex than this but it actually couldn't be easier.
