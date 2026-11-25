@@ -3,6 +3,8 @@ This repo follows along with the React course tutorial on Laracast by Simon Vrac
 
 This project works alongside https://github.com/Dec-246/react-from-scratch-api
 
+![User Interface](image-1.png)
+
 ## How to run
 
 1. Install dependencies:
