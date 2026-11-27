@@ -1,9 +1,21 @@
 # React-from-scratch
+
 This repo follows along with the React course tutorial on Laracast by Simon Vrachliotis.
 
-This project works alongside https://github.com/Dec-246/react-from-scratch-api
+This project works alongside 
+
+https://github.com/Dec-246/react-from-scratch-api
 
 ![User Interface](image-1.png)
+
+Search Bar
+
+![Search Bar](image-2.png)
+
+Adding new post via form submission
+
+![New puppy](image-3.png)
+
 
 ## How to run
 
