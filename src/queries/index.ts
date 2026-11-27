@@ -47,3 +47,33 @@ export async function toggleLikedStatus(id: Puppy["id"]) {
     throw error;
   }
 }
+
+export async function createPuppy(formData: FormData) {
+  try {
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/puppies",
+
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw errorData;
+    }
+
+    const data = await response.json();
+
+    // return new puppy
+    return data;
+  } catch (error) {
+    console.error(error);
+    return error;
+    
+  }
+}

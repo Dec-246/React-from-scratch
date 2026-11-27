@@ -1,6 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Puppy } from "../types";
 import { useFormState, useFormStatus } from "react-dom";
+import { createPuppy } from "../queries";
+import { ErrorBoundary } from "react-error-boundary";
 
 export function NewPuppyForm({
   puppies,
@@ -12,23 +14,39 @@ export function NewPuppyForm({
 
   return (
     <div className="mt-12 flex items-center justify-between bg-white p-8 shadow ring ring-black/5">
+      
+      <ErrorBoundary fallbackRender={({ error }) => ( 
+        <pre>{JSON.stringify(error, null, 2)}</pre>
+  )}
+  >
+
       <form 
         action={async (formData: FormData) => {
-          // sleep 1.5s
-          await new Promise((resolve) => setTimeout(resolve, 1500));
 
-          const newPuppy: Puppy = {
-            id: puppies.length + 1,
-            name: formData.get('name') as string,
-            trait: formData.get('trait') as string,
+          const response = await createPuppy(formData);
+
+          console.log({ response });
+
+          if (response.data) {
+            setPuppies([...puppies, response.data]);
+
+          }
+
+          // sleep 1.5s
+          // await new Promise((resolve) => setTimeout(resolve, 1500));
+
+          // const newPuppy: Puppy = {
+          //   id: puppies.length + 1,
+          //   name: formData.get('name') as string,
+          //   trait: formData.get('trait') as string,
 
             // give random image between 7 and 22
-            imageUrl: `/images/${Math.floor(Math.random() * 16) + 7}.jpg`,
-            likedBy: [1],
-          };
+          //   imageUrl: `/images/${Math.floor(Math.random() * 16) + 7}.jpg`,
+          //   likedBy: [1],
+          // };
 
           // spread existing array (of 6 puppies), then append 7th puppy at end.
-          setPuppies([...puppies, newPuppy]);
+          // setPuppies([...puppies, newPuppy]);
         }}
 
         className="mt-4 flex w-full flex-col items-start gap-4">
@@ -42,7 +60,10 @@ export function NewPuppyForm({
               type="text"
               name="name"
             />
+
+
           </fieldset>
+
           <fieldset className="flex w-full flex-col gap-1">
             <label htmlFor="trait">Personality trait</label>
             <input
@@ -52,22 +73,23 @@ export function NewPuppyForm({
               type="text"
               name="trait"
             />
+
           </fieldset>
-          <fieldset
-            disabled
-            className="col-span-2 flex w-full cursor-not-allowed flex-col gap-1 opacity-50"
+
+          <fieldset className="col-span-2 flex w-full flex-col gap-1"
           >
-            <label htmlFor="avatar_url">Profile pic</label>
+            <label htmlFor="image_url">Profile pic</label>
             <input
               className="max-w-96 rounded-sm bg-white px-2 py-1 ring ring-black/20 focus:ring-2 focus:ring-cyan-500 focus:outline-none"
-              id="avatar_url"
+              id="image_url"
               type="file"
-              name="avatar_url"
+              name="image_url"
             />
           </fieldset>
         </div>
         <SubmitButton />
       </form>
+      </ErrorBoundary>
     </div>
   );
 }
