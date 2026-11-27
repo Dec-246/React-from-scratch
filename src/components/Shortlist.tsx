@@ -77,9 +77,11 @@ function DeleteButton ({
             onClick={async () => {
               setPending(true);
               const updatedPuppy = await toggleLikedStatus(id);
+
               setPuppies((prevPups) => {
-                return prevPups.map((puppy) =>
-                  puppy.id === updatedPuppy.id ? updatedPuppy : puppy,
+                
+                return prevPups.map((existingPuppy) =>
+                  existingPuppy.id === updatedPuppy.id ? updatedPuppy : existingPuppy,
                 );
               });
               setPending(false);
