@@ -1,9 +1,16 @@
 import { Heart, LoaderCircle } from "lucide-react";
 import { Puppy } from "../types";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { toggleLikedStatus } from "../queries";
 
 
-export function LikeToggle ({ puppy }: { puppy: Puppy }) {
+export function LikeToggle ({ 
+    puppy, 
+    setPuppies, 
+}: { 
+    puppy: Puppy;
+    setPuppies: Dispatch<SetStateAction<Puppy[]>>;
+ }) {
 
     const [pending, setPending] = useState(false);
 
@@ -11,10 +18,19 @@ export function LikeToggle ({ puppy }: { puppy: Puppy }) {
         <button 
             className="group" 
             // click button
-            onClick={() => {
+            onClick={async () => {
 
                 setPending(true);
 
+                const updatedPuppy = await toggleLikedStatus(puppy.id);
+
+                setPuppies((prevPups) => {
+                    return prevPups.map((puppy) =>
+                    
+                        puppy.id === updatedPuppy.id ? updatedPuppy : puppy,
+                    );
+                });
+                setPending(false);
                 // Setting time buffer of 1.5s when user likes a post
                 // setTimeout(() => {
 
@@ -28,7 +44,6 @@ export function LikeToggle ({ puppy }: { puppy: Puppy }) {
                     
                 //     setPending(false);
                 // }, 1500);
- 
             }}
             >
 
@@ -45,7 +60,6 @@ export function LikeToggle ({ puppy }: { puppy: Puppy }) {
                         : "stroke-slate-200 group-hover:stroke-slate-300"
                     }
                 />
-
             )}
         </button>
     );
