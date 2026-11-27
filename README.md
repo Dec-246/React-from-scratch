@@ -2,6 +2,8 @@
 
 This repo follows along with the React course tutorial on Laracast by Simon Vrachliotis.
 
+https://laracasts.com/series/react-from-scratch
+
 This project works alongside 
 
 https://github.com/Dec-246/react-from-scratch-api
